@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import ScrollReveal from '../components/ScrollReveal'
 
 const samples = [
   { title: 'Business Cards', type: 'Premium matte finish', className: 'gallery-business' },
@@ -22,14 +23,16 @@ export default function Gallery() {
       </div>
 
       <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {samples.map((sample) => (
-          <article key={sample.title} className="overflow-hidden rounded-lg bg-black shadow-lg ring-1 ring-mgyellow/20">
-            <div className={`gallery-sample ${sample.className}`} aria-hidden="true" />
-            <div className="p-4 text-left">
-              <h2 className="font-bold text-white">{sample.title}</h2>
-              <p className="mt-1 text-sm font-semibold text-white">{sample.type}</p>
-            </div>
-          </article>
+        {samples.map((sample, index) => (
+          <ScrollReveal key={sample.title} delay={`delay-${(index % 3 + 1) * 100}`} className="h-full">
+            <article className="overflow-hidden rounded-lg bg-black shadow-lg ring-1 ring-mgyellow/20 h-full flex flex-col">
+              <div className={`gallery-sample ${sample.className}`} aria-hidden="true" />
+              <div className="p-4 text-left flex-1">
+                <h2 className="font-bold text-white">{sample.title}</h2>
+                <p className="mt-1 text-sm font-semibold text-white">{sample.type}</p>
+              </div>
+            </article>
+          </ScrollReveal>
         ))}
       </div>
     </div>

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import services from '../data/services'
 import ServiceCard from '../components/ServiceCard'
+import ScrollReveal from '../components/ScrollReveal'
 import imgBusinessCards from '../assets/business_cards.png'
 import imgBanners from '../assets/banners.png'
 import imgStickers from '../assets/stickers.png'
@@ -62,14 +63,16 @@ export default function Home() {
 
       <section className="stats-band">
         <div className="container grid gap-4 py-5 sm:grid-cols-3">
-          {stats.map((item) => (
-            <div key={item.label} className="stat-card">
-              <div className="stat-icon" aria-hidden="true">{item.icon}</div>
-              <div>
-                <div className="stat-value">{item.value}</div>
-                <div className="stat-label">{item.label}</div>
+          {stats.map((item, index) => (
+            <ScrollReveal key={item.label} delay={`delay-${(index + 1) * 100}`} className="h-full">
+              <div className="stat-card h-full">
+                <div className="stat-icon" aria-hidden="true">{item.icon}</div>
+                <div>
+                  <div className="stat-value">{item.value}</div>
+                  <div className="stat-label">{item.label}</div>
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </section>
@@ -87,13 +90,14 @@ export default function Home() {
           </div>
 
           <div className="mt-6 grid grid-cols-1 items-start gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {services.slice(0, 3).map((service) => (
-              <ServiceCard
-                key={service.id}
-                service={service}
-                expanded={openInquiryId === service.id}
-                onToggle={() => toggleInquiry(service.id)}
-              />
+            {services.slice(0, 3).map((service, index) => (
+              <ScrollReveal key={service.id} delay={`delay-${(index + 1) * 100}`}>
+                <ServiceCard
+                  service={service}
+                  expanded={openInquiryId === service.id}
+                  onToggle={() => toggleInquiry(service.id)}
+                />
+              </ScrollReveal>
             ))}
           </div>
         </section>
@@ -103,26 +107,32 @@ export default function Home() {
             ['✨', 'Quality', 'Calibrated colour, careful material choice and clean finishing.'],
             ['⚡', 'Speed', 'Clear timelines, express support and quick replies for urgent jobs.'],
             ['💰', 'Value', 'Practical recommendations so you get the right finish for the budget.']
-          ].map(([icon, title, text]) => (
-            <div key={title} className="info-panel">
-              <div className="info-icon" aria-hidden="true">{icon}</div>
-              <h3>{title}</h3>
-              <p>{text}</p>
-            </div>
+          ].map(([icon, title, text], index) => (
+            <ScrollReveal key={title} delay={`delay-${(index + 1) * 100}`} className="h-full">
+              <div className="info-panel h-full">
+                <div className="info-icon" aria-hidden="true">{icon}</div>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </div>
+            </ScrollReveal>
           ))}
         </section>
 
         <section id="about" className="mt-12 scroll-mt-28">
           <h2 className="section-title text-2xl">What Customers Notice</h2>
           <div className="mt-5 grid gap-4 sm:grid-cols-2">
-            <blockquote className="quote-card">
-              <p>"Excellent service, fast delivery and great print quality. Highly recommended."</p>
-              <cite>K. Perera</cite>
-            </blockquote>
-            <blockquote className="quote-card">
-              <p>"Very professional and helpful staff. Our banners looked amazing."</p>
-              <cite>S. Fernando</cite>
-            </blockquote>
+            <ScrollReveal delay="delay-100">
+              <blockquote className="quote-card h-full">
+                <p>"Excellent service, fast delivery and great print quality. Highly recommended."</p>
+                <cite>K. Perera</cite>
+              </blockquote>
+            </ScrollReveal>
+            <ScrollReveal delay="delay-200">
+              <blockquote className="quote-card h-full">
+                <p>"Very professional and helpful staff. Our banners looked amazing."</p>
+                <cite>S. Fernando</cite>
+              </blockquote>
+            </ScrollReveal>
           </div>
         </section>
       </div>

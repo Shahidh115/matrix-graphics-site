@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import ScrollReveal from '../components/ScrollReveal'
 
 export default function About() {
   useEffect(() => {
@@ -19,11 +20,13 @@ export default function About() {
           ['Our Story', 'Built around hands-on print work, quick service and careful finishing for local customers.'],
           ['Mission', 'To make professional printing easier to order, easier to understand and easier to trust.'],
           ['Values', 'Quality, honesty, speed and helpful customer guidance from enquiry to delivery.']
-        ].map(([title, text]) => (
-          <div key={title} className="info-panel">
-            <h3>{title}</h3>
-            <p>{text}</p>
-          </div>
+        ].map(([title, text], index) => (
+          <ScrollReveal key={title} delay={`delay-${(index + 1) * 100}`} className="h-full">
+            <div className="info-panel h-full">
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </div>
+          </ScrollReveal>
         ))}
       </section>
     </div>

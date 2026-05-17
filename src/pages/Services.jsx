@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import services from '../data/services'
 import ServiceCard from '../components/ServiceCard'
+import ScrollReveal from '../components/ScrollReveal'
 
 export default function Services() {
   const [openInquiryId, setOpenInquiryId] = useState(null)
@@ -23,13 +24,14 @@ export default function Services() {
       </div>
 
       <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {services.map((service) => (
-          <ServiceCard
-            key={service.id}
-            service={service}
-            expanded={openInquiryId === service.id}
-            onToggle={() => toggleInquiry(service.id)}
-          />
+        {services.map((service, index) => (
+          <ScrollReveal key={service.id} delay={`delay-${(index % 3 + 1) * 100}`} className="h-full">
+            <ServiceCard
+              service={service}
+              expanded={openInquiryId === service.id}
+              onToggle={() => toggleInquiry(service.id)}
+            />
+          </ScrollReveal>
         ))}
       </div>
     </div>
