@@ -5,7 +5,7 @@ import tiktokIcon from '../assets/social/tiktok.svg'
 
 const socialLinks = [
   { label: 'Facebook', icon: facebookIcon, href: 'https://web.facebook.com/profile.php?id=61568915770760' },
-  { label: 'Instagram', icon: instagramIcon, href: 'https://www.instagram.com/' },
+  { label: 'Instagram', icon: instagramIcon, href: 'https://www.instagram.com/matrixgraphics.lk?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==' },
   { label: 'TikTok', icon: tiktokIcon, href: 'https://www.tiktok.com/' }
 ]
 

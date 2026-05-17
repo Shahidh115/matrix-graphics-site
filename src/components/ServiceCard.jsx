@@ -21,8 +21,8 @@ export default function ServiceCard({ service, expanded, onToggle }) {
       aria-expanded={expanded}
     >
       <div className="min-w-0 flex-1 text-left">
-        <h3 className="text-sm font-bold text-white truncate">{service.name}</h3>
-        <p className="mt-1 text-xs font-medium leading-5 text-white/80 truncate">{service.desc}</p>
+        <h3 className="text-sm font-bold text-mgnavy truncate">{service.name}</h3>
+        <p className="mt-1 text-xs font-medium leading-5 text-mgmuted truncate">{service.desc}</p>
       </div>
 
       {expanded && (
@@ -30,7 +30,7 @@ export default function ServiceCard({ service, expanded, onToggle }) {
           className="mt-2 w-full overflow-hidden rounded-md border border-mgyellow/25 bg-black/35 p-3 animate-in fade-in slide-in-from-top-2 duration-300"
           onClick={(e) => e.stopPropagation()}
         >
-          <label htmlFor={`inquiry-${service.id}`} className="text-sm font-bold text-white">
+          <label htmlFor={`inquiry-${service.id}`} className="text-sm font-bold text-mgnavy">
             Edit inquiry message
           </label>
           <textarea

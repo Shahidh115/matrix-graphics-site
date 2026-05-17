@@ -22,13 +22,13 @@ export default function FAQ() {
       <div className="mt-6 space-y-3">
         {faqs.map((faq) => (
           <details key={faq.q} className="dark-panel group overflow-hidden p-4 sm:p-5 transition duration-300">
-            <summary className="flex cursor-pointer items-center justify-between gap-4 text-sm font-bold text-white transition duration-300 hover:text-mgyellow sm:text-base">
+            <summary className="flex cursor-pointer items-center justify-between gap-4 text-sm font-bold text-mgnavy transition duration-300 hover:text-mgyellow sm:text-base">
               <span>{faq.q}</span>
               <svg className="h-5 w-5 flex-shrink-0 transition duration-300 group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                 <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
               </svg>
             </summary>
-            <div className="mt-3 border-t border-mgyellow/15 pt-4 text-sm font-semibold leading-6 text-white/90 animate-in fade-in slide-in-from-top-2 duration-300">{faq.a}</div>
+            <div className="mt-3 border-t border-mgyellow/15 pt-4 text-sm font-semibold leading-6 text-mgnavy/90 animate-in fade-in slide-in-from-top-2 duration-300">{faq.a}</div>
           </details>
         ))}
       </div>

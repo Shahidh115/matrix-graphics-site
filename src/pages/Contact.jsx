@@ -47,7 +47,7 @@ export default function Contact() {
 
       <div className="mt-6 grid gap-6 md:grid-cols-2">
         <div className="dark-panel p-5 sm:p-6">
-          <h2 className="text-lg font-bold text-white">Get a Quote</h2>
+          <h2 className="text-lg font-bold text-mgnavy">Get a Quote</h2>
           <form className="mt-4 space-y-3" onSubmit={submit}>
             <input name="name" value={form.name} onChange={handleChange} placeholder="Your name" className="form-field" />
             <input name="phone" value={form.phone} onChange={handleChange} placeholder="Phone number" className="form-field" />
@@ -66,8 +66,8 @@ export default function Contact() {
         </div>
 
         <div className="dark-panel p-5 sm:p-6">
-          <h2 className="text-lg font-bold text-white">Visit Us</h2>
-          <p className="mt-2 text-sm font-semibold leading-6 text-white">99D, Yatiyanthota Road, Seethawaka, Avissawella, Sri Lanka</p>
+          <h2 className="text-lg font-bold text-mgnavy">Visit Us</h2>
+          <p className="mt-2 text-sm font-semibold leading-6 text-mgnavy">99D, Yatiyanthota Road, Seethawaka, Avissawella, Sri Lanka</p>
           <a
             href={SHOP_LOCATION_URL}
             target="_blank"

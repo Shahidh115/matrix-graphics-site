@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import services from '../data/services'
 import ServiceCard from '../components/ServiceCard'
+import imgBusinessCards from '../assets/business_cards.png'
+import imgBanners from '../assets/banners.png'
+import imgStickers from '../assets/stickers.png'
 
 const stats = [
   { icon: '🖨️', value: '18+', label: 'print services' },
@@ -47,15 +50,11 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="print-preview" aria-label="Print samples preview">
-            <div className="sample-sheet sample-sheet-one">
-              <span>BUSINESS CARDS</span>
-            </div>
-            <div className="sample-sheet sample-sheet-two">
-              <span>BANNERS</span>
-            </div>
-            <div className="sample-sheet sample-sheet-three">
-              <span>STICKERS</span>
+          <div className="relative min-h-[22rem] w-full flex items-center justify-center animate-fade-in-up" style={{ animationDelay: '0.2s' }} aria-label="Print samples preview">
+            <div className="relative w-full h-full max-w-sm mx-auto">
+              <img src={imgBusinessCards} alt="Premium Business Cards" className="absolute top-[5%] left-[0%] w-[55%] rounded-lg shadow-[0_15px_30px_rgba(0,0,0,0.5)] border border-white/10 z-20 hover:scale-105 transition-transform duration-500" />
+              <img src={imgBanners} alt="Vinyl Banners" className="absolute top-[20%] right-[0%] w-[60%] rounded-lg shadow-[0_15px_30px_rgba(0,0,0,0.5)] border border-white/10 z-10 hover:scale-105 transition-transform duration-500" />
+              <img src={imgStickers} alt="Custom Stickers" className="absolute bottom-[5%] left-[20%] w-[55%] rounded-lg shadow-[0_20px_40px_rgba(0,0,0,0.6)] border border-white/10 z-30 hover:scale-105 transition-transform duration-500" />
             </div>
           </div>
         </div>
