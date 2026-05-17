@@ -39,7 +39,7 @@ export default function Home() {
               Fast, clean and affordable printing for businesses, schools, events and everyday documents in Avissawella.
             </p>
             <div className="mt-5 inline-flex max-w-full items-center rounded-md border border-mgyellow/40 bg-mgyellow px-4 py-2 text-sm font-bold text-mgblack shadow-md">
-              Special discounts available for school and bulk orders
+              Special discounts available for School and Bulk Orders!
             </div>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <Link to="/services" className="btn-primary">
