@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import businessLogo from '../assets/business-logo.svg'
+import darkLogo from '../assets/logo-dark-mode-new.svg'
 
 const links = [
   { to: '/', label: 'Home' },
@@ -39,8 +40,17 @@ export default function Navbar() {
     <header className="navbar-shell sticky top-0 z-40">
       <div className="container flex items-center justify-between gap-3 py-1.5 sm:py-2">
         <NavLink to="/" className="order-2 flex min-w-0 items-center gap-3 md:order-1" aria-label="Matrix Graphics home">
-          <div className="nav-logo-frame">
-            <img src={businessLogo} alt="" className="nav-logo h-8 w-auto" />
+          <div className="nav-logo-frame relative flex items-center justify-center">
+            <img 
+              src={businessLogo} 
+              alt="Matrix Graphics Logo" 
+              className={`nav-logo absolute h-8 w-auto transition-opacity duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] ${isDark ? 'opacity-0' : 'opacity-100'}`} 
+            />
+            <img 
+              src={darkLogo} 
+              alt="Matrix Graphics Logo" 
+              className={`nav-logo absolute h-8 w-auto transition-opacity duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] ${isDark ? 'opacity-100' : 'opacity-0'}`} 
+            />
           </div>
         </NavLink>
 

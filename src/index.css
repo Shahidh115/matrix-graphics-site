@@ -148,12 +148,7 @@ a {
   overflow: visible;
   background: transparent;
   padding: 0;
-  filter:
-    drop-shadow(0.08px 0 0 var(--logo-outline))
-    drop-shadow(-0.08px 0 0 var(--logo-outline))
-    drop-shadow(0 0.08px 0 var(--logo-outline))
-    drop-shadow(0 -0.08px 0 var(--logo-outline))
-    drop-shadow(0 8px 16px var(--glass-shadow));
+  filter: drop-shadow(0 8px 16px var(--glass-shadow));
   transition: filter 0.3s ease;
 }
 
