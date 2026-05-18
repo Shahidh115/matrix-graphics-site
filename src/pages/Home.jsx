@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 import services from '../data/services'
 import ServiceCard from '../components/ServiceCard'
 import ScrollReveal from '../components/ScrollReveal'
-import imgBusinessCards from '../assets/business_cards.png'
-import imgBanners from '../assets/banners.png'
-import imgStickers from '../assets/stickers.png'
+import imgBusinessCards from '../assets/business_cards.webp'
+import imgBanners from '../assets/banners.webp'
+import imgStickers from '../assets/stickers.webp'
 
 const stats = [
   { icon: '🖨️', value: '18+', label: 'print services' },
