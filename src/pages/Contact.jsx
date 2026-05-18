@@ -72,14 +72,18 @@ export default function Contact() {
           <div className="dark-panel p-5 sm:p-6 h-full">
             <h2 className="text-lg font-bold text-mgnavy">Visit Us</h2>
             <p className="mt-2 text-sm font-semibold leading-6 text-mgnavy">99D, Yatiyanthota Road, Seethawaka, Avissawella, Sri Lanka</p>
-            <a
-              href={SHOP_LOCATION_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="map-tile mt-4"
-            >
-              <span>Open Shop Location in Google Maps</span>
-            </a>
+            <div className="mt-4 overflow-hidden rounded-md border border-white/20 h-60 w-full shadow-inner">
+              <iframe 
+                src="https://maps.google.com/maps?q=99D,+Yatiyanthota+Road,+Seethawaka,+Avissawella,+Sri+Lanka&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen="" 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Matrix Graphics Shop Location"
+              ></iframe>
+            </div>
 
             <div className="mt-5 grid gap-3 rounded-md border border-white/20 bg-black/60 p-4 text-sm font-semibold text-white">
               <div>

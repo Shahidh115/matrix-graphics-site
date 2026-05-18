@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
-import businessLogo from '../assets/business-logo.svg'
-import darkLogo from '../assets/logo-dark-mode-new.svg'
+import businessLogo from '../assets/logo-lite-mode-new.svg'
+import darkLogo from '../assets/logo-dark-mode-new2.svg'
 
 const links = [
   { to: '/', label: 'Home' },
@@ -14,7 +14,7 @@ const links = [
 
 export default function Navbar() {
   const location = useLocation()
-  
+
   const [isDark, setIsDark] = useState(() => {
     if (typeof window !== 'undefined') {
       return localStorage.getItem('theme') !== 'light'
@@ -41,15 +41,15 @@ export default function Navbar() {
       <div className="container flex items-center justify-between gap-3 py-1.5 sm:py-2">
         <NavLink to="/" className="order-2 flex min-w-0 items-center gap-3 md:order-1" aria-label="Matrix Graphics home">
           <div className="nav-logo-frame relative flex items-center justify-center">
-            <img 
-              src={businessLogo} 
-              alt="Matrix Graphics Logo" 
-              className={`nav-logo absolute h-8 w-auto transition-opacity duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] ${isDark ? 'opacity-0' : 'opacity-100'}`} 
+            <img
+              src={businessLogo}
+              alt="Matrix Graphics Logo"
+              className={`nav-logo absolute transition-opacity duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] ${isDark ? 'opacity-0' : 'opacity-100'}`}
             />
-            <img 
-              src={darkLogo} 
-              alt="Matrix Graphics Logo" 
-              className={`nav-logo absolute h-8 w-auto transition-opacity duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] ${isDark ? 'opacity-100' : 'opacity-0'}`} 
+            <img
+              src={darkLogo}
+              alt="Matrix Graphics Logo"
+              className={`nav-logo absolute transition-opacity duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] ${isDark ? 'opacity-100' : 'opacity-0'}`}
             />
           </div>
         </NavLink>
@@ -121,20 +121,26 @@ function MobileMenu({ isActiveLink }) {
           <path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
         </svg>
       </button>
-      {isOpen && (
-      <div className="dark-panel absolute left-0 mt-2 w-screen p-2 sm:left-auto sm:w-56">
+      
+      <div 
+        className={`absolute left-0 mt-2 w-56 p-2 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] origin-top-left border border-gray-200 dark:border-gray-800 shadow-2xl rounded-lg bg-white dark:bg-[#050505] ${isOpen ? 'translate-y-0 scale-100 opacity-100 visible' : '-translate-y-2 scale-95 opacity-0 invisible pointer-events-none'}`}
+      >
         {links.map((link) => (
           <NavLink
             key={link.to}
             to={link.to}
             onClick={() => setIsOpen(false)}
-            className={isActiveLink(link.to) ? 'block rounded bg-mgyellow p-2 font-bold text-mgblack transition duration-300' : 'block rounded p-2 font-semibold text-mgnavy transition duration-300 hover:bg-mgnavy/10 hover:text-mgyellow'}
+            className={isActiveLink(link.to) ? 'block rounded bg-mgyellow p-2 font-bold text-mgblack transition duration-300 mb-1 last:mb-0' : 'block rounded p-2 font-semibold text-mgnavy dark:text-gray-200 transition duration-300 hover:bg-mgnavy/10 dark:hover:bg-mgyellow/20 hover:text-mgyellow mb-1 last:mb-0'}
           >
             {link.label}
           </NavLink>
         ))}
       </div>
-      )}
     </div>
   )
 }
+
+
+
+
+

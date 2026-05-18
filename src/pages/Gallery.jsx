@@ -33,8 +33,8 @@ export default function Gallery() {
       <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {samples.map((sample, index) => (
           <ScrollReveal key={sample.title} delay={`delay-${(index % 3 + 1) * 100}`} className="h-full">
-            <article className="overflow-hidden rounded-lg bg-mgnavy shadow-[0_4px_20px_rgba(0,0,0,0.15)] ring-1 ring-mgyellow/30 h-full flex flex-col group cursor-pointer transition-transform duration-300 hover:-translate-y-1">
-              <div className="relative h-48 w-full overflow-hidden bg-black/10">
+            <article className="dark-panel overflow-hidden h-full flex flex-col group cursor-pointer transition-transform duration-300 hover:-translate-y-2">
+              <div className="relative h-48 w-full overflow-hidden bg-black/5 dark:bg-black/20">
                 <img 
                   src={sample.image} 
                   alt={sample.title} 
@@ -42,9 +42,9 @@ export default function Gallery() {
                   loading="lazy"
                 />
               </div>
-              <div className="p-4 text-left flex-1 bg-gradient-to-b from-mgnavy to-black/90">
-                <h2 className="font-bold text-white">{sample.title}</h2>
-                <p className="mt-1 text-sm font-medium text-white/80">{sample.type}</p>
+              <div className="p-5 text-left flex-1">
+                <h2 className="font-bold text-lg">{sample.title}</h2>
+                <p className="mt-1 text-sm font-semibold opacity-80">{sample.type}</p>
               </div>
             </article>
           </ScrollReveal>

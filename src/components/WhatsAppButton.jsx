@@ -13,9 +13,9 @@ export default function WhatsAppButton({ message }) {
       target="_blank"
       rel="noreferrer"
       aria-label="Chat with Matrix Graphics on WhatsApp"
-      className="fixed bottom-6 right-4 z-50 rounded-full bg-white p-0.5 shadow-[0_12px_28px_rgba(0,0,0,0.32)] ring-2 ring-white transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(0,0,0,0.4)] md:bottom-8 md:right-8"
+      className="fixed bottom-6 right-4 z-50 transition duration-300 hover:-translate-y-1 hover:scale-105 md:bottom-8 md:right-8"
     >
-      <img src={whatsappIcon} alt="" className="h-14 w-14" />
+      <img src={whatsappIcon} alt="" className="h-14 w-14 object-contain drop-shadow-[0_8px_16px_rgba(0,0,0,0.35)]" />
     </a>
   )
 }
