@@ -39,11 +39,11 @@ export default function Contact() {
     <div className="container py-8 sm:py-10 md:py-12">
       <div className="max-w-3xl">
         <h1 className="section-title text-2xl font-bold sm:text-3xl">Contact Us</h1>
-        <p className="mt-2 text-sm font-medium text-mgnavy/85 sm:text-base">
-          Phone: <a href="tel:+94777043334" className="font-semibold text-mgnavy">+94 777 04 3334</a>
-          <span className="mx-2">|</span>
-          Email: <a href="mailto:info@matrixgraphics.lk" className="font-semibold text-mgnavy">info@matrixgraphics.lk</a>
-        </p>
+        <div className="mt-2 flex flex-col gap-1 text-sm font-medium text-mgnavy/85 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-2 sm:text-base">
+          <span>Phone: <a href="tel:+94777043334" className="font-semibold text-mgnavy">+94 777 04 3334</a></span>
+          <span className="hidden sm:inline mx-1">|</span>
+          <span>Email: <a href="mailto:info@matrixgraphics.lk" className="font-semibold text-mgnavy break-all">info@matrixgraphics.lk</a></span>
+        </div>
       </div>
 
       <div className="mt-6 grid gap-6 md:grid-cols-2">
@@ -71,7 +71,16 @@ export default function Contact() {
         <ScrollReveal delay="delay-200">
           <div className="dark-panel p-5 sm:p-6 h-full">
             <h2 className="text-lg font-bold text-mgnavy">Visit Us</h2>
-            <p className="mt-2 text-sm font-semibold leading-6 text-mgnavy">99D, Yatiyanthota Road, Seethawaka, Avissawella, Sri Lanka</p>
+            <p className="mt-2 text-sm font-semibold leading-6 text-mgnavy">
+              <a
+                href={SHOP_LOCATION_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="transition duration-300 hover:text-mgyellow hover:underline"
+              >
+                99D, Yatiyanthota Road, Seethawaka, Avissawella, Sri Lanka
+              </a>
+            </p>
             <div className="mt-4 overflow-hidden rounded-md border border-white/20 h-60 w-full shadow-inner">
               <iframe 
                 src="https://maps.google.com/maps?q=99D,+Yatiyanthota+Road,+Seethawaka,+Avissawella,+Sri+Lanka&t=&z=16&ie=UTF8&iwloc=&output=embed"

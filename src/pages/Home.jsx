@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 import services from '../data/services'
 import ServiceCard from '../components/ServiceCard'
 import ScrollReveal from '../components/ScrollReveal'
-import imgBusinessCards from '../assets/business_cards.webp'
-import imgBanners from '../assets/banners.webp'
-import imgStickers from '../assets/stickers.webp'
+import imgHero1 from '../assets/gallery/1.jpeg'
+import imgHero2 from '../assets/gallery/2.jpeg'
+import imgHero3 from '../assets/gallery/3.jpeg'
 
 const stats = [
   { icon: '🖨️', value: '18+', label: 'print services' },
@@ -38,7 +38,7 @@ export default function Home() {
             <p className="mt-4 max-w-2xl text-base leading-7 text-white/90 sm:text-lg">
               Fast, clean and affordable printing for businesses, schools, events and everyday documents in Avissawella.
             </p>
-            <div className="mt-5 inline-flex max-w-full items-center rounded-md border border-mgyellow/30 bg-black/40 backdrop-blur-md px-4 py-2 text-sm font-bold text-mgyellow shadow-[0_4px_15px_rgba(255,215,0,0.15)]">
+            <div className="hero-promo-badge mt-5 flex w-full items-center rounded-md border border-mgyellow/30 bg-black/40 backdrop-blur-md px-4 py-2 text-sm font-bold text-mgyellow shadow-[0_4px_15px_rgba(255,215,0,0.15)]">
               Special discounts available for School and Bulk Orders!
             </div>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
@@ -53,9 +53,9 @@ export default function Home() {
 
           <div className="relative min-h-[22rem] w-full flex items-center justify-center animate-fade-in-up" style={{ animationDelay: '0.2s' }} aria-label="Print samples preview">
             <div className="relative w-full h-full max-w-sm mx-auto">
-              <img src={imgBusinessCards} alt="Premium Business Cards" className="absolute top-[5%] left-[0%] w-[55%] rounded-lg shadow-[0_15px_30px_rgba(0,0,0,0.5)] border border-white/10 z-20 hover:scale-105 transition-transform duration-500" />
-              <img src={imgBanners} alt="Vinyl Banners" className="absolute top-[20%] right-[0%] w-[60%] rounded-lg shadow-[0_15px_30px_rgba(0,0,0,0.5)] border border-white/10 z-10 hover:scale-105 transition-transform duration-500" />
-              <img src={imgStickers} alt="Custom Stickers" className="absolute bottom-[5%] left-[20%] w-[55%] rounded-lg shadow-[0_20px_40px_rgba(0,0,0,0.6)] border border-white/10 z-30 hover:scale-105 transition-transform duration-500" />
+              <img src={imgHero1} alt="Premium Print Sample 1" className="absolute top-[5%] left-[0%] w-[55%] rounded-lg shadow-[0_15px_30px_rgba(0,0,0,0.5)] border border-white/10 z-20 hover:scale-105 transition-transform duration-500" />
+              <img src={imgHero2} alt="Premium Print Sample 2" className="absolute top-[20%] right-[0%] w-[60%] rounded-lg shadow-[0_15px_30px_rgba(0,0,0,0.5)] border border-white/10 z-10 hover:scale-105 transition-transform duration-500" />
+              <img src={imgHero3} alt="Premium Print Sample 3" className="absolute bottom-[5%] left-[20%] w-[55%] rounded-lg shadow-[0_20px_40px_rgba(0,0,0,0.6)] border border-white/10 z-30 hover:scale-105 transition-transform duration-500" />
             </div>
           </div>
         </div>

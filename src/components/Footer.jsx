@@ -16,9 +16,9 @@ export default function Footer() {
         <div>
           <h3 className="font-bold text-mgyellow">Matrix Graphics</h3>
           <p className="text-sm font-semibold text-white">Your Printing Solutions</p>
-          <p className="mt-3 text-sm font-semibold leading-6 text-white">99D, Yatiyanthota Road, Seethawaka, Avissawella, Sri Lanka</p>
+          <p className="mt-3 text-sm font-semibold leading-6 text-white break-words">99D, Yatiyanthota Road, Seethawaka, Avissawella, Sri Lanka</p>
           <p className="mt-2 text-sm font-semibold text-white">Phone: <a href="tel:+94777043334" className="transition duration-300 text-mgyellow hover:brightness-90">+94 777 04 3334</a></p>
-          <p className="text-sm font-semibold text-white">Email: <a href="mailto:info@matrixgraphics.lk" className="transition duration-300 text-mgyellow hover:brightness-90">info@matrixgraphics.lk</a></p>
+          <p className="text-sm font-semibold text-white break-all">Email: <a href="mailto:info@matrixgraphics.lk" className="transition duration-300 text-mgyellow hover:brightness-90">info@matrixgraphics.lk</a></p>
         </div>
 
         <div>

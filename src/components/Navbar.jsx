@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import businessLogo from '../assets/logo-lite-mode-new.svg'
-import darkLogo from '../assets/logo-dark-mode-new2.svg'
+import darkLogo from '../assets/logo-dark.png'
 
 const links = [
   { to: '/', label: 'Home' },
@@ -38,23 +38,23 @@ export default function Navbar() {
 
   return (
     <header className="navbar-shell sticky top-0 z-40">
-      <div className="container flex items-center justify-between gap-3 py-1.5 sm:py-2">
+      <div className="container flex items-center justify-between gap-3 py-1 sm:py-1.5">
         <NavLink to="/" className="order-2 flex min-w-0 items-center gap-3 md:order-1" aria-label="Matrix Graphics home">
           <div className="nav-logo-frame relative flex items-center justify-center">
             <img
               src={businessLogo}
               alt="Matrix Graphics Logo"
-              className={`nav-logo absolute transition-opacity duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] ${isDark ? 'opacity-0' : 'opacity-100'}`}
+              className={`nav-logo nav-logo-light absolute transition-opacity duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] ${isDark ? 'opacity-0' : 'opacity-100'}`}
             />
             <img
               src={darkLogo}
               alt="Matrix Graphics Logo"
-              className={`nav-logo absolute transition-opacity duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] ${isDark ? 'opacity-100' : 'opacity-0'}`}
+              className={`nav-logo nav-logo-dark absolute transition-opacity duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] ${isDark ? 'opacity-100' : 'opacity-0'}`}
             />
           </div>
         </NavLink>
 
-        <nav className="order-3 hidden items-center gap-2 rounded-lg border border-white/12 bg-white/8 p-1 md:order-2 md:flex">
+        <nav className="order-3 hidden items-center gap-2 rounded-lg nav-inner-container p-1 md:order-2 md:flex">
           {links.map((link) => (
             <NavLink key={link.to} to={link.to} end={link.to === '/'} className={navClass(isActiveLink(link.to))}>
               {link.label}
@@ -87,7 +87,7 @@ export default function Navbar() {
             href="tel:+94777043334"
             aria-label="Call Matrix Graphics"
             title="Call Matrix Graphics"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-mgyellow/35 bg-mgyellow/10 text-mgyellow transition duration-300 hover:bg-mgyellow hover:text-mgblack"
+            className="nav-phone-btn inline-flex h-10 w-10 items-center justify-center rounded-md border border-mgyellow/35 bg-mgyellow/10 text-mgyellow transition duration-300 hover:bg-mgyellow hover:text-mgblack"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M21 16.92V20a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3 5.18 2 2 0 0 1 5 3h3.09a2 2 0 0 1 2 1.72c.12.9.32 1.78.6 2.62a2 2 0 0 1-.45 2.11L9.2 10.49a16 16 0 0 0 4.31 4.31l1.04-1.04a2 2 0 0 1 2.11-.45c.84.28 1.72.48 2.62.6A2 2 0 0 1 21 16.92Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
@@ -123,7 +123,7 @@ function MobileMenu({ isActiveLink }) {
       </button>
       
       <div 
-        className={`absolute left-0 mt-2 w-56 p-2 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] origin-top-left border border-gray-200 dark:border-gray-800 shadow-2xl rounded-lg bg-white dark:bg-[#050505] ${isOpen ? 'translate-y-0 scale-100 opacity-100 visible' : '-translate-y-2 scale-95 opacity-0 invisible pointer-events-none'}`}
+        className={`absolute left-0 mt-2 w-56 p-2 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] origin-top-left shadow-2xl rounded-lg mobile-menu-dropdown ${isOpen ? 'translate-y-0 scale-100 opacity-100 visible' : '-translate-y-2 scale-95 opacity-0 invisible pointer-events-none'}`}
       >
         {links.map((link) => (
           <NavLink

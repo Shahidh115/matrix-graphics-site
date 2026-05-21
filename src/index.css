@@ -13,9 +13,13 @@ html {
   --mg-red: #E11D48;
   --bg-primary: #F8FAFC;
   --text-primary: #0F172A;
-  --glass-bg: rgba(255, 255, 255, 0.75);
-  --glass-border: rgba(255, 255, 255, 0.8);
-  --glass-shadow: rgba(15, 23, 36, 0.12);
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(15, 23, 36, 0.08);
+  --glass-shadow: rgba(15, 23, 36, 0.05);
+  --glass-highlight: rgba(255, 255, 255, 0.9);
+  --nav-inner-bg: rgba(15, 23, 36, 0.02);
+  --nav-inner-border: rgba(15, 23, 36, 0.06);
+  --nav-inner-highlight: rgba(255, 255, 255, 0.7);
   --panel-bg: rgba(230, 235, 241, 0.92);
   --panel-border: rgba(15, 23, 36, 0.15);
   --panel-shadow: rgba(15, 23, 36, 0.28);
@@ -23,6 +27,7 @@ html {
   --icon-border: rgba(15, 23, 36, 0.18);
   --input-bg: rgba(255, 255, 255, 0.95);
   --logo-outline: transparent;
+  --nav-height: 4rem;
 }
 
 .dark {
@@ -30,9 +35,13 @@ html {
   --mg-muted: #94A3B8;
   --bg-primary: #050505;
   --text-primary: #FAFAFA;
-  --glass-bg: rgba(5, 5, 5, 0.85);
-  --glass-border: rgba(255, 215, 0, 0.15);
-  --glass-shadow: rgba(0, 0, 0, 0.35);
+  --glass-bg: rgba(5, 5, 5, 0.65);
+  --glass-border: rgba(255, 215, 0, 0.12);
+  --glass-shadow: rgba(0, 0, 0, 0.4);
+  --glass-highlight: rgba(255, 255, 255, 0.08);
+  --nav-inner-bg: rgba(255, 255, 255, 0.04);
+  --nav-inner-border: rgba(255, 255, 255, 0.06);
+  --nav-inner-highlight: rgba(255, 255, 255, 0.05);
   --panel-bg: rgba(11, 17, 32, 0.85);
   --panel-border: rgba(255, 215, 0, 0.1);
   --panel-shadow: rgba(0, 0, 0, 0.15);
@@ -136,20 +145,49 @@ a {
 
 .navbar-shell {
   background: var(--glass-bg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: 
+    inset 0 1px 0 0 var(--glass-highlight),
+    0 8px 32px var(--glass-shadow);
+  transition: background-color 0.7s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.7s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  height: var(--nav-height);
+}
+
+.nav-inner-container {
+  background: var(--nav-inner-bg);
+  border: 1px solid var(--nav-inner-border);
+  box-shadow: inset 0 1px 0 0 var(--nav-inner-highlight);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--glass-border);
-  transition: background-color 0.7s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-menu-dropdown {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 
+    inset 0 1px 0 0 var(--glass-highlight),
+    0 10px 30px var(--glass-shadow);
+  transition: background-color 0.7s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.7s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-logo-frame {
   display: flex;
-  width: 10rem;
-  height: 3.5rem;
+  width: 11rem;
+  height: 3.8rem;
   flex: 0 0 auto;
   align-items: center;
   justify-content: center;
-  overflow: visible;
+  overflow: hidden;
   background: transparent;
   padding: 0;
   filter: drop-shadow(0 8px 16px var(--glass-shadow));
@@ -157,17 +195,49 @@ a {
 }
 
 @media (min-width: 640px) {
+  :root {
+    --nav-height: 5rem;
+  }
   .nav-logo-frame {
-    width: 14rem;
-    height: 4.8rem;
+    width: 16rem;
+    height: 5rem;
   }
 }
 
 .nav-logo {
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: 72%;
   object-fit: contain;
-  transform: scale(1.45);
+  transform: none;
+  transition: height 0.25s ease;
+}
+
+.nav-logo-light {
+  height: 125%;
+  max-height: none;
+  max-width: none;
+  width: auto;
+  transform: none;
+  object-fit: contain;
+  object-position: center center;
+}
+
+.nav-logo-dark {
+  height: 80%;
+}
+
+/* ensure header container fills navbar so logos are vertically centered */
+.navbar-shell > .container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* add top offset so page content isn't hidden under fixed navbar */
+main {
+  padding-top: var(--nav-height);
 }
 
 .section-title {
@@ -579,4 +649,20 @@ a {
 
 .delay-300 {
   transition-delay: 300ms;
+}
+
+/* ── Tiny screen fixes (≤ 380 px) ───────────────────────── */
+@media (max-width: 380px) {
+  .nav-logo-frame {
+    width: 9rem;
+    height: 3.2rem;
+  }
+  .nav-phone-btn {
+    display: none;
+  }
+  .hero-promo-badge {
+    font-size: 0.7rem;
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+  }
 }
