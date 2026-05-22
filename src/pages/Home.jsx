@@ -7,10 +7,12 @@ import imgHero1 from '../assets/gallery/1.jpeg'
 import imgHero2 from '../assets/gallery/2.jpeg'
 import imgHero3 from '../assets/gallery/3.jpeg'
 
+import { Printer, GraduationCap, HeartHandshake } from 'lucide-react'
+
 const stats = [
-  { icon: '🖨️', value: '18+', label: 'print services' },
-  { icon: '🎓', value: 'Bulk', label: 'school order discounts' },
-  { icon: '🤝', value: 'Customer', label: 'satisfaction' }
+  { icon: Printer, value: '18+', label: 'print services' },
+  { icon: GraduationCap, value: 'Bulk', label: 'school order discounts' },
+  { icon: HeartHandshake, value: 'Customer', label: 'satisfaction' }
 ]
 
 export default function Home() {
@@ -63,17 +65,21 @@ export default function Home() {
 
       <section className="stats-band">
         <div className="container grid gap-4 py-5 sm:grid-cols-3">
-          {stats.map((item, index) => (
+          {stats.map((item, index) => {
+            const Icon = item.icon
+            return (
             <ScrollReveal key={item.label} delay={`delay-${(index + 1) * 100}`} className="h-full">
               <div className="stat-card h-full">
-                <div className="stat-icon" aria-hidden="true">{item.icon}</div>
+                <div className="stat-icon" aria-hidden="true">
+                  <Icon className="w-7 h-7 text-mgyellow transition-colors duration-500" strokeWidth={1.75} />
+                </div>
                 <div>
                   <div className="stat-value">{item.value}</div>
                   <div className="stat-label">{item.label}</div>
                 </div>
               </div>
             </ScrollReveal>
-          ))}
+          )})}
         </div>
       </section>
 

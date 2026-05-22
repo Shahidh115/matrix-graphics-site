@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import businessLogo from '../assets/logo-lite-mode-new.svg'
 import darkLogo from '../assets/logo-dark.png'
@@ -39,7 +39,7 @@ export default function Navbar() {
   return (
     <header className="navbar-shell sticky top-0 z-40">
       <div className="container flex items-center justify-between gap-3 py-1 sm:py-1.5">
-        <NavLink to="/" className="order-2 flex min-w-0 items-center gap-3 md:order-1" aria-label="Matrix Graphics home">
+        <NavLink to="/" className="order-2 flex min-w-0 items-center gap-3 lg:order-1" aria-label="Matrix Graphics home">
           <div className="nav-logo-frame relative flex items-center justify-center">
             <img
               src={businessLogo}
@@ -54,7 +54,7 @@ export default function Navbar() {
           </div>
         </NavLink>
 
-        <nav className="order-3 hidden items-center gap-2 rounded-lg nav-inner-container p-1 md:order-2 md:flex">
+        <nav className="order-3 hidden items-center gap-2 rounded-lg nav-inner-container p-1 lg:order-2 lg:flex">
           {links.map((link) => (
             <NavLink key={link.to} to={link.to} end={link.to === '/'} className={navClass(isActiveLink(link.to))}>
               {link.label}
@@ -62,8 +62,8 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <div className="order-1 flex items-center gap-2 sm:gap-3 md:order-3">
-          <div className="md:hidden">
+        <div className="order-1 flex items-center gap-2 sm:gap-3 lg:order-3">
+          <div className="lg:hidden">
             <MobileMenu isActiveLink={isActiveLink} />
           </div>
 
@@ -80,7 +80,7 @@ export default function Navbar() {
             </div>
           </button>
 
-          <a href="mailto:info@matrixgraphics.lk" className="hidden rounded-md bg-mgyellow px-4 py-2 text-sm font-bold text-mgblack transition duration-300 hover:brightness-95 md:inline-block">
+          <a href="mailto:info@matrixgraphics.lk" className="hidden rounded-md bg-mgyellow px-4 py-2 text-sm font-bold text-mgblack transition duration-300 hover:brightness-95 lg:inline-block">
             Email Us
           </a>
           <a
@@ -107,23 +107,48 @@ function navClass(active) {
 
 function MobileMenu({ isActiveLink }) {
   const [isOpen, setIsOpen] = useState(false)
+  const menuRef = useRef(null)
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsOpen(false)
+      }
+    }
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+      document.addEventListener('touchstart', handleClickOutside)
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener('touchstart', handleClickOutside)
+    }
+  }, [isOpen])
 
   return (
-    <div className="relative">
+    <div className="relative" ref={menuRef}>
       <button
         type="button"
         onClick={() => setIsOpen((current) => !current)}
         aria-label="Open menu"
         aria-expanded={isOpen}
-        className="flex cursor-pointer items-center justify-center rounded-md border border-mgyellow/35 bg-mgyellow px-3 py-2 text-sm font-black text-mgblack transition duration-300"
+        className="relative flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-md border border-mgyellow/35 bg-mgyellow text-mgblack transition duration-300 hover:brightness-95"
       >
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-          <path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-        </svg>
+        <div className={`absolute inset-0 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${isOpen ? 'rotate-90 scale-50 opacity-0' : 'rotate-0 scale-100 opacity-100'}`}>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+          </svg>
+        </div>
+        <div className={`absolute inset-0 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${isOpen ? 'rotate-0 scale-100 opacity-100' : '-rotate-90 scale-50 opacity-0'}`}>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6 18L18 6M6 6l12 12" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
       </button>
       
       <div 
-        className={`absolute left-0 mt-2 w-56 p-2 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] origin-top-left shadow-2xl rounded-lg mobile-menu-dropdown ${isOpen ? 'translate-y-0 scale-100 opacity-100 visible' : '-translate-y-2 scale-95 opacity-0 invisible pointer-events-none'}`}
+        className={`absolute left-0 mt-3 w-56 p-2 transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] origin-top-left shadow-2xl rounded-lg mobile-menu-dropdown ${isOpen ? 'translate-y-0 scale-100 opacity-100' : '-translate-y-4 scale-95 opacity-0 pointer-events-none'}`}
       >
         {links.map((link) => (
           <NavLink
