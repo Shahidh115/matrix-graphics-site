@@ -102,6 +102,7 @@ export default function Home() {
                   service={service}
                   expanded={openInquiryId === service.id}
                   onToggle={() => toggleInquiry(service.id)}
+                  onClose={() => setOpenInquiryId(null)}
                 />
               </ScrollReveal>
             ))}

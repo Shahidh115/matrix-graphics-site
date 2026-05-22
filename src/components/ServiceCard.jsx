@@ -1,16 +1,35 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 const WA_NUMBER = '94777043334'
 const BASE = `https://wa.me/${WA_NUMBER}`
 
-export default function ServiceCard({ service, expanded, onToggle }) {
+export default function ServiceCard({ service, expanded, onToggle, onClose }) {
   const defaultMsg = `Hello Matrix Graphics, I am interested in ${service.name}. Please send me details, pricing and turnaround time.`
   const [message, setMessage] = useState(defaultMsg)
   const cleanMessage = message.trim() || defaultMsg
   const href = `${BASE}?text=${encodeURIComponent(cleanMessage)}`
+  const cardRef = useRef(null)
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (expanded && cardRef.current && !cardRef.current.contains(event.target)) {
+        if (onClose) onClose()
+      }
+    }
+
+    if (expanded) {
+      document.addEventListener('mousedown', handleClickOutside)
+      document.addEventListener('touchstart', handleClickOutside)
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener('touchstart', handleClickOutside)
+    }
+  }, [expanded, onClose])
 
   return (
     <article
+      ref={cardRef}
       className="service-card flex flex-col gap-3 rounded-md border border-mgblack/10 bg-black/30 p-3 transition-shadow duration-200 hover:shadow-lg"
       role="button"
       tabIndex={0}

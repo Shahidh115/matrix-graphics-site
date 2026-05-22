@@ -30,6 +30,7 @@ export default function Services() {
               service={service}
               expanded={openInquiryId === service.id}
               onToggle={() => toggleInquiry(service.id)}
+              onClose={() => setOpenInquiryId(null)}
             />
           </ScrollReveal>
         ))}
